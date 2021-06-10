@@ -35,7 +35,7 @@
                     </div>
                 @endif
             </div>
-            <form action="{{ route('logout') }}" method="GET" id="logout-form" style="display:none;">
+            <form action="{{ route('logout') }}" method="POST" id="logout-form" style="display:none;">
                 @csrf
             </form>
         @endguest

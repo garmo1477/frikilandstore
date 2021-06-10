@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Str;
-
+$DATABASE_URL = parse_url('//crsyzgnvfjsjot:405693bb21bbeaf85d5d159b2f673036c15ee4abc9f17f5cb348c817d66154cd@ec2-3-226-134-153.compute-1.amazonaws.com:5432/d9a06ah1er6ff9');
 return [
-
+    
+    
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -15,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +77,7 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
+            'database' => ltrim($DATABASE_URL["path"], "/"),
         ],
 
         'sqlsrv' => [

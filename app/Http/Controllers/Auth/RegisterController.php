@@ -22,7 +22,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:120', 'unique:users'],
             'password' => ['required', 'string', 'min:4'],
-            'role' => ['required', Rule::in([User::SELLER, User::BUYER])]
+            'role' => ['required', Rule::in([User::SELLER, User::BUYER])],
         ]);
     }
 
@@ -71,16 +71,20 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role']
+            'role' => $data['role'],
         ]);
     }
     public function registered(Request $request, $user)
     {
-       if($request->ajax()){
-           return response()->json(['message' => __('Muchas gracias por registrarse')]);
-       }
-    
-       return redirect()->route('registro')->with('status', 'Te has registrado correctamente, ya puedes acceder a tu perfil');
+        if ($request->ajax()) {
+            return response()->json(['message' => __('Muchas gracias por registrarse')]);
+        }
+        if (auth()->user() == 'SELLER') {
+            return redirect()->route('seller.index')->with('status', 'Te has registrado correctamente, ya puedes acceder a tu perfil');
+        } else {
+            return redirect()->route('registro')->with('status', 'Te has registrado correctamente, ya puedes acceder a tu perfil');
+        }
+
     }
 
     public function redirectPath()

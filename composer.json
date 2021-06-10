@@ -19,7 +19,8 @@
         "laravel/ui": "2.0",
         "laravelcollective/html": "^6.2",
         "phpseclib/bcmath_compat": "1.0.4",
-        "vinkla/hashids": "8.0"
+        "vinkla/hashids": "8.0",
+        "ext-bcmath": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",        

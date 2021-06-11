@@ -41,14 +41,13 @@ class ProductController extends Controller
         $textButton = 'Editar producto';
         $options = ['route' => ['seller.edit', ['product' => $product]], 'files' => true];
         $title = 'Editar un producto';
-        $update = true;
-        $met = ['method' => 'POST'];
+        $update = true;        
 
         return view('partials.seller.products.edit', compact('product', 'textButton', 'options', 'title', 'update', 'met'));
     }
 
     public function update(Product $product, Request $request)
     {
-        $product->update($request->validated());
+    
     }
 }

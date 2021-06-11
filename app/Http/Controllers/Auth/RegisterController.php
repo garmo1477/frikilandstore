@@ -89,6 +89,11 @@ class RegisterController extends Controller
 
     public function redirectPath()
     {
+        // si el usuario que se ha identificado es vendedor, lo redireccionamos al perfil de vendedor y si no a la raiz
+
+        if (auth()->user()->isSeller()) {
+            return '/seller';
+        }
         return "/";
     }
 }

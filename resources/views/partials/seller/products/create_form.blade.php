@@ -9,10 +9,8 @@
             @include('partials.errorsForm')
         @endif
         <h2 class="pb-2">{{ $title }}</h2>
-        {!! Form::model($product, $options) !!}
-        @isset($update)
-            @method('PUT')
-        @endisset
+        
+        {!! Form::model($product, $options) !!}  
 
         <div class="custom-file pb-5">
             {!! Form::file('image', ['class' => 'custom-file-input', 'id' => 'image']) !!}
@@ -38,7 +36,8 @@
             {!! Form::number('price', null, ['class' => 'form-control']) !!}
         </div>
 
-        {!! Form::submit($textButton, ['class' => 'btn btn-success pt-2 mb-4 float-right']) !!}
+        {!! Form::submit($textButton, ['class' => 'btn btn-success mb-4 float-right']) !!}
+        <a href="{{ route('seller.index') }}" class="btn btn-primary mb-4">{{ __('Volver al Perfil') }}</a>
 
 
         {!! Form::close() !!}

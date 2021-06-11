@@ -26,11 +26,12 @@ Route::group(['prefix' => 'seller', 'as' => 'seller.', 'middleware' => ['seller'
   Route::get('/', 'SellerController@index')->name('index');
   Route::get('/create', 'ProductController@create')->name('create');
   Route::post('/store', 'ProductController@store')->name('store'); 
-  Route::put('/update', 'ProductController@update')->name('update');
+  
 });
 
 // esta ruta da error si la pongo dentro del grupo de rutas del vendedor.
 Route::get('/edit/{product}', 'ProductController@edit')->name('seller.edit');
+Route::put('/update', 'ProductController@update')->name('seller.update');
 
 /**
  * Rutas Comprador

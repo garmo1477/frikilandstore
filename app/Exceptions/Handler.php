@@ -50,6 +50,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        // añadir esto al subir proyecto a heroku, para solucionar error de login/logout
         if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
             return redirect()->route('login');
         }

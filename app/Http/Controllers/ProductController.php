@@ -43,11 +43,28 @@ class ProductController extends Controller
         $title = 'Editar un producto';
         $update = true;        
 
-        return view('partials.seller.products.edit', compact('product', 'textButton', 'options', 'title', 'update', 'met'));
+        return view('partials.seller.products.edit', compact('product', 'textButton', 'options', 'title', 'update'));
     }
 
     public function update(Product $product, Request $request)
     {
+       $request = $request->validate([
+            'name_product'=>'required',
+            'description'=> 'required',
+            'category' => 'required',
+            'price' => 'required'
+        ]);
+ 
+ 
+        $data = Product::find($product);
+        
+        $data->name_product = $request['name_product'];        
+        $data->description = $request['description'];
+        $data->category = $request['category'];
+        $data->price = $request['price'];
+        $data->update();
+ 
+        return redirect('seller.edit', $product)->with('success', 'Student updated successfully');
     
     }
 }

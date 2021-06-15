@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-   use Hashidable;
+    use Hashidable;
     protected $fillable = ['user_id', 'name_product', 'description', 'image', 'category', 'in_offer', 'price'];
 
     public function seller()

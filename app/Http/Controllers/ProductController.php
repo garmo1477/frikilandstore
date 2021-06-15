@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\UploadImage;
 use App\Product;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -41,30 +40,41 @@ class ProductController extends Controller
         $textButton = 'Editar producto';
         $options = ['route' => ['seller.edit', ['product' => $product]], 'files' => true];
         $title = 'Editar un producto';
-        $update = true;        
+        $update = true;
 
         return view('partials.seller.products.edit', compact('product', 'textButton', 'options', 'title', 'update'));
     }
 
     public function update(Product $product, Request $request)
     {
-       $request = $request->validate([
-            'name_product'=>'required',
-            'description'=> 'required',
+        /*$product['user_id'] = auth()->user()->id;
+        $product->$request->all();
+        $product->update();*/
+        $request->validate([
+            'name_product' => 'required',
+            'description' => 'required',
             'category' => 'required',
-            'price' => 'required'
+            'price' => 'required',
         ]);
- 
- 
-        $data = Product::find($product);
         
-        $data->name_product = $request['name_product'];        
-        $data->description = $request['description'];
-        $data->category = $request['category'];
-        $data->price = $request['price'];
-        $data->update();
- 
-        return redirect('seller.edit', $product)->with('success', 'Student updated successfully');
-    
+        $photo = $product->image;
+        $data = $request->all();
+        if ($request->hasfile('image')) {
+            if ($product->image) {
+                Storage::delete([$photo]);
+            }
+            $product->image = $data['image'];
+        }else{
+            $data['image'] = $product->image;
+        }
+
+        //Storage::delete(sprintf('%s/%s', $path, $fileName));
+        //$file = Uploader::uploadFile('picture', 'courses');
+      
+        $product->update($data);
+
+        return redirect(route('seller.edit', $product))->with('status', 'Actualizado correctamente');
+
     }
+
 }

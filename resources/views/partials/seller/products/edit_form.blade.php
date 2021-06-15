@@ -5,11 +5,11 @@
             @include('partials.errorsForm')
         @endif
         <h2 class="pb-2">{{ $title }}</h2>
-        <form action="{{ route('seller.update') }}" file="true" method="POST">
+        <form action="{{ route('seller.update', $product) }}" file="true" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
-                <input class="form-control" autocomplete="off" name="image" value="{{ old('image') }}" type="file"
+                <input class="form-control" autocomplete="off" name="image" value="{{ $product->image }}" type="file"
                     placeholder="{{ __('Portada') }}" />
             </div>
 

@@ -80,8 +80,8 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        $data = Product::find($product)->first;
-        $data->delete();
+        
+        $product->delete();
         return back()->with('status', 'Producto eliminado correctamente');
     }
 

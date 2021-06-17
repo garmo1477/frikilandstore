@@ -24,6 +24,11 @@ class ProductController extends Controller
 
         $product['user_id'] = auth()->user()->id;
 
+        if (isset($request['in_offer'] ))
+        {
+            $request['in_offer'] = 1;
+        }
+
         if ($file = $request->file('image')) {
             //guardamos el nombre de la imagen en una variable
             $name_file = $file->getClientOriginalName();
@@ -47,34 +52,37 @@ class ProductController extends Controller
 
     public function update(Product $product, Request $request)
     {
-        /*$product['user_id'] = auth()->user()->id;
-        $product->$request->all();
-        $product->update();*/
+       
         $request->validate([
             'name_product' => 'required',
             'description' => 'required',
             'category' => 'required',
             'price' => 'required',
-        ]);
-        
-        $photo = $product->image;
-        $data = $request->all();
-        if ($request->hasfile('image')) {
-            if ($product->image) {
-                Storage::delete([$photo]);
-            }
-            $product->image = $data['image'];
-        }else{
-            $data['image'] = $product->image;
+        ]);       
+        if (!isset($request['in_offer'] ))
+        {
+            $request['in_offer'] = 0;
         }
 
-        //Storage::delete(sprintf('%s/%s', $path, $fileName));
-        //$file = Uploader::uploadFile('picture', 'courses');
-      
+        $data = $request->all();
+        if ($request->hasFile('image')){
+            $photo = $request->file('image');
+            $name_image = time().$photo->getClientOriginalName(); 
+            $photo->move(public_path().'/images/', $name_image);          
+            $data['image'] = $name_image; 
+
+          }
         $product->update($data);
 
-        return redirect(route('seller.edit', $product))->with('status', 'Actualizado correctamente');
+        return redirect(route('seller.index'))->with('status', 'Producto actualizado correctamente');
 
+    }
+
+    public function destroy(Product $product)
+    {
+        $data = Product::find($product)->first;
+        $data->delete();
+        return back()->with('status', 'Producto eliminado correctamente');
     }
 
 }

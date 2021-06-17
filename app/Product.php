@@ -15,4 +15,8 @@ class Product extends Model
         // un vendedor puede tener varios productos a la venta
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function imagePath(){
+        return sprintf('%s/%s', '/storage/images', $this->image);
+    }
 }

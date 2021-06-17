@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'seller', 'as' => 'seller.', 'middleware' => ['seller'
 // esta ruta da error si la pongo dentro del grupo de rutas del vendedor.
 Route::get('/edit/{product}', 'ProductController@edit')->name('seller.edit');
 Route::put('/update/{product}', 'ProductController@update')->name('seller.update');
+Route::delete('/delete/{product}', 'ProductController@destroy')->name('seller.destroy');
 
 /**
  * Rutas Comprador

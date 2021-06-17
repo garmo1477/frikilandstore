@@ -7,11 +7,11 @@
             </div>
                       
         </div>
-        <div class="row justify-content-center">       
+        <div class="row d-flex">       
                 @foreach ($products as $product)
                 <div class="card col-md-3">
                     <div class="card-image pt-4">
-                        <img src="images/{{ $product->image }}" width="240px" height="240px" alt="" />                        
+                        <img src="images/{{ $product->image }}" class="img-fluid" width="300px" height="190px" alt="" />                        
                     </div>
                     <div class="card-body">
                         <p class="card-title">

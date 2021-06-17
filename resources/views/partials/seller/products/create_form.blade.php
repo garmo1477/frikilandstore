@@ -9,12 +9,20 @@
             @include('partials.errorsForm')
         @endif
         <h2 class="pb-2">{{ $title }}</h2>
-        
-        {!! Form::model($product, $options) !!}  
+
+        {!! Form::model($product, $options) !!}
 
         <div class="custom-file pb-5">
             {!! Form::file('image', ['class' => 'custom-file-input', 'id' => 'image']) !!}
             {!! Form::label('image', __('Selecciona una imagen para tu producto'), ['class' => 'custom-file-label']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('in_offer', __('¿Quieres ponerle de oferta?')) !!}
+            @if ($product->in_offer == 1)
+                {{ Form::checkbox('in_offer', 1, true) }}
+            @else
+                {{ Form::checkbox('in_offer', 1, false) }}
+            @endif
         </div>
         <div class="form-group">
             {!! Form::label('name_product', __('Nombre Producto')) !!}

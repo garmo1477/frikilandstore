@@ -5,14 +5,20 @@
             @include('partials.errorsForm')
         @endif
         <h2 class="pb-2">{{ $title }}</h2>
-        <form action="{{ route('seller.update', $product) }}" file="true" method="POST">
+        <form action="{{ route('seller.update', $product) }}" files="true" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
-                <input class="form-control" autocomplete="off" name="image" value="{{ $product->image }}" type="file"
-                    placeholder="{{ __('Portada') }}" />
+                <input type="file" class="form-control" autocomplete="off" name="image" placeholder="{{ __('Portada') }}" />
             </div>
-
+            <div class="form-group">
+                {!! Form::label('in_offer', __('¿Quieres ponerle de oferta?')) !!}
+                @if ($product->in_offer == 1)
+                    {{ Form::checkbox('in_offer', 1, true) }}
+                @else
+                    {{ Form::checkbox('in_offer', 1, false) }}
+                @endif
+            </div>
             <div class="form-group">
                 <input class="form-control" autocomplete="off" value="{{ $product->name_product }}" name="name_product" type="text"
                     placeholder="{{ __('Nombre producto') }}" />

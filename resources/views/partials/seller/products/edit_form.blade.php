@@ -5,10 +5,12 @@
             @include('partials.errorsForm')
         @endif
         <h2 class="pb-2">{{ $title }}</h2>
+        
         <form action="{{ route('seller.update', $product) }}" files="true" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
+                
                 <input type="file" class="form-control" autocomplete="off" name="image" placeholder="{{ __('Portada') }}" />
             </div>
             <div class="form-group">
@@ -35,7 +37,8 @@
                 <input class="form-control" autocomplete="off" value="{{ $product->price }}" name="price" type="number"
                     placeholder="{{ __('Añade un precio') }}" />
             </div>
-            <button type="submit" class="btn btn-success">
+            <a href="{{ route('seller.index') }}" class="btn btn-danger">{{ __('Volver al listado') }}</a>
+            <button type="submit" class="btn btn-success float-right">
                 {{ __('Actualizar producto') }}
             </button>
         </form>

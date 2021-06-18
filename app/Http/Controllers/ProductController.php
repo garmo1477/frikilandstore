@@ -42,12 +42,10 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $textButton = 'Editar producto';
-        $options = ['route' => ['seller.edit', ['product' => $product]], 'files' => true];
-        $title = 'Editar un producto';
-        $update = true;
+        $textButton = 'Editar producto';       
+        $title = 'Editar un producto';   
 
-        return view('partials.seller.products.edit', compact('product', 'textButton', 'options', 'title', 'update'));
+        return view('partials.seller.products.edit', compact('product', 'textButton', 'title'));
     }
 
     public function update(Product $product, Request $request)
@@ -69,9 +67,8 @@ class ProductController extends Controller
             $photo = $request->file('image');
             $name_image = time().$photo->getClientOriginalName(); 
             $photo->move(public_path().'/images/', $name_image);          
-            $data['image'] = $name_image; 
-
-          }
+            $data['image'] = $name_image;
+        }
         $product->update($data);
 
         return redirect(route('seller.index'))->with('status', 'Producto actualizado correctamente');

@@ -26,19 +26,20 @@
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
-                                <td><img src="images/{{ $product->image }}" class="img-fluid" width="340px"
-                                        height="200px" alt="{{ $product->name_product }}" /></td>
+                                <td>
+                                    <img src="images/{{ $product->image }}" class="img-fluid" width="340px"
+                                        height="200px" alt="{{ $product->name_product }}" />
+                                </td>
                                 <td>{{ $product->name_product }}</td>
                                 <td>{{ $product->price }} €</td>
                                 <td>
-
-                                    <a class="btn btn-outline-success"
+                                    <a class="btn btn-outline-success float-left"
                                         href="{{ route('seller.edit', ['product' => $product]) }}">
                                         {{ __('Editar') }}
                                     </a>
                                     <form action="{{ route('seller.destroy', $product) }}" method="POST">
                                         @csrf @method('DELETE')
-                                        <button class="btn btn-outline-danger">Eliminar</button>
+                                        <button class="btn btn-outline-danger float-right">{{ __('Eliminar') }}</button>
                                     </form>
 
                                 </td>

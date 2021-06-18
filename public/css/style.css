@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
 }
+
+/****** GENERAL *******/
 body{
    background-color: #f9f9fa; 
    font-family: 'Cabin', sans-serif!important;
@@ -29,10 +31,22 @@ h2{
 .container{
     max-width: 1440px;
 }
+
+.form-control{
+    box-shadow: 0px 0px 3px 0px rgb(209, 209, 209);
+}
+.page-item.active .page-link{    
+    background-color: #a6304e!important;
+    color: #ffff;
+    border-color: #a6304e;
+}
+
+ .page-link, .page-link:hover{
+    color: #a6304e;
+}
 /******** BANNERS ********/
 .simple{
-    background-color: #a6304e;
-    
+    background-color: #a6304e;    
 }
 
 .banner{
@@ -327,6 +341,11 @@ h2{
 }
 .footer-section{
     padding:0!important;
+}
+@media screen and (min-width: 1366px) {
+    .img-fluid{
+        height: 190px;
+    }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .widget-item {

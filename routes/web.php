@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::get('/', 'WelcomeController@index')->name('welcome');
+Auth::routes();
 
 Route::get('/registro', function () {
     return view('partials.content.buyer_form');
@@ -42,4 +43,7 @@ Route::group(['prefix' => 'buyer', 'as' => 'buyer.', 'middleware' => ['auth']], 
   Route::get('/', 'BuyerController@index')->name('index');
 });
 
-Auth::routes();
+/**
+ * Rutas páginas generales
+ */
+Route::get('/videojuegos', 'VideogameController@index')->name('videogames.index');

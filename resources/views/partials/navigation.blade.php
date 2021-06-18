@@ -4,7 +4,7 @@
 <div class="col-md-5">
     <div class="links">
         <a class="pl-3" href="{{ route('welcome') }}">Inicio</a>
-        <a class="pl-3" href="#">Juegos</a>
+        <a class="pl-3" href="{{ route('videogames.index') }}">Juegos</a>
         <a class="pl-3" href="#">Merchan</a>
         <a class="pl-3" href="#">Blog</a>
         <a class="pl-3" href="#">Contacto</a>

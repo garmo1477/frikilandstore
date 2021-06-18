@@ -8,8 +8,8 @@
         <div class="">
             <div class="section-title text-center pt-4 pb-4">
                 
-                <h2 class="text-white">{{ __('¿Quieres vender todos tus productos en :app ?', ['app' => env('APP_NAME')]) }}</h2>
-                <p class="text-white">{{ __('Regístrate como vendedor y podrás publicar tus productos') }}</p>
+                <h2 class="text-white">{{ __('¿Quieres vender todos tus productos en Frikiland Store') }}</h2>
+                <p class="text-white">{{ __('Regístrate como vendedor y podrás publicarlos') }}</p>
             </div>
             @if (!session('error-login'))
                 @include('partials.errorsForm')

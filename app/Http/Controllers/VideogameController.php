@@ -9,7 +9,7 @@ class VideogameController extends Controller
 {
     public function index()
     {
-        $products = Product::where('category', '=', 'Videojuegos')->paginate(12);
+        $products = Product::where('category', '=', 'Videojuegos')->paginate(4);
         return view('partials.products.videogames', compact('products'));
     }
 }

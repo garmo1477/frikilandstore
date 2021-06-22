@@ -4,5 +4,5 @@
     
 @endsection
 @section('content')
-    @include('partials.content.videogames.index');
+    @include('partials.content.videogames.index')
 @endsection

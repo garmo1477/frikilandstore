@@ -12,8 +12,9 @@
         </div>
         <div class="row justify-content-center">
             <div class="container">
-                <h4>{{ __('Tus productos publicados') }}</h4>
-
+                <h3>{{ __('Tus productos publicados') }}<a class="btn btn-success float-md-right mb-3"
+                href="{{ route('seller.create') }}">{{ __('Crear nuevo producto') }}</a></h3>
+                
                 <table class="table table-dark text-center table-striped">
                     <thead>
                         <tr>
@@ -47,8 +48,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <a class="btn btn-success float-right mb-5"
-                    href="{{ route('seller.create') }}">{{ __('Crear nuevo producto') }}</a>
+               
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
     <div class="links">
         <a class="pl-3" href="{{ route('welcome') }}">{{ __('Inicio') }}</a>
         <a class="pl-3" href="{{ route('seller.index') }}">{{ __('Productos publicados') }}</a>
-        <a class="pl-3" href="#">{{ __('Mis datos') }}</a>        
+        <a class="pl-3" href="">{{ __('Mis datos') }}</a>        
     </div>
 </div>
 <div class="col-md-3">

@@ -28,11 +28,15 @@
             <div class="form-group">
                 <input class="form-control" autocomplete="off" value="{{ $product->description }}" name="description" type="text"
                     placeholder="{{ __('Descripción') }}" />
-            </div>
+            </div>               
+
             <div class="form-group">
-                <input class="form-control" autocomplete="off" value="{{ $product->category }}" name="category" type="text"
-                    placeholder="{{ __('Añade una categoría') }}" />
+                
+                {!! Form::select('category', ['Videojuegos' => 'Videojuegos', 'Merchan' => 'Merchan', 'Peliculas' => 'Peliculas'], $product->category, ['class' => 'form-control', 'placeholder' => 'Seleccionar categoría']) !!}
+    
             </div>
+
+
             <div class="form-group">
                 <input class="form-control" autocomplete="off" value="{{ $product->price }}" name="price" type="number"
                     placeholder="{{ __('Añade un precio') }}" />

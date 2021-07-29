@@ -36,7 +36,8 @@
 
         <div class="form-group">
             {!! Form::label('category', __('Dale una categoría')) !!}
-            {!! Form::text('category', null, ['class' => 'form-control']) !!}
+            {!! Form::select('category', ['Videojuegos' => 'Videojuegos', 'Merchan' => 'Merchan', 'Peliculas' => 'Peliculas'], 'Seleccionar categoria', ['class' => 'form-control', 'placeholder' => 'Seleccionar categoría']) !!}
+
         </div>
 
         <div class="form-group">

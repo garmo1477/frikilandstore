@@ -2,6 +2,7 @@
     .register-form div.spacing {
         padding: 6%;
     }
+
 </style>
 <div class="row register-form mt-4">
     <div class="col-lg-6 spacing">
@@ -9,9 +10,16 @@
             @if (!session('error-login'))
                 @include('partials.errorsForm')
             @endif
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+            @if (!session('error-login'))
+                @include('partials.errorsForm')
+            @endif
             @guest
                 <div class="section-title text-center pt-4 pb-4">
-
                     <h2 class="text-white">{{ __('¿Quieres vender todos tus productos en Frikiland Store') }}</h2>
                     <p class="text-white">{{ __('Regístrate como vendedor y podrás publicarlos') }}</p>
                 </div>
@@ -45,8 +53,9 @@
                 </form>
             @endguest
             @auth
-                <h2 class="text-white">{{ __('Todos los productos de Frikiland Store', ['user' => auth()->user()->name]) }}</h2>
-                <p class="text-white">{{ __('Visita nuestro apartados de productos y encuentra lo que buscas') }}</p>
+                <h2 class="text-white">
+                    {{ __('Todos los productos de Frikiland Store', ['user' => auth()->user()->name]) }}</h2>
+                <p class="text-white">{{ __('Visita nuestros apartados de productos y encuentra lo que buscas') }}</p>
                 <div class="d-flex justify-content-center">
                     <a href="{{ route('videogames.index') }}" class="btn btn-primary">{{ __('Ver Juegos') }}</a>
                     <a href="" class="btn btn-primary ml-4">{{ __('Ver Merchan') }}</a>

@@ -3,7 +3,7 @@
                 data-target="#login-modal">{{ __('Acceder') }}
             </button>
             @include('partials.modals.login')
-            <a class="pl-3 btn" href="{{ route('registro') }}">Registrarse</a>
+            <a class="pl-3 btn text-white" href="{{ route('registro') }}">{{ __('Registrarse') }}</a>
         @else
             <div class="dropdown">
                 <a class="btn btn-danger dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"

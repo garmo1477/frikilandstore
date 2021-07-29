@@ -2,11 +2,13 @@
     @foreach ($products as $product)
     <div class="card col-md-3 mb-4">
         <div class="card-image pt-4">
-            <img src="images/{{ $product->image }}" class="img-fluid" width="300px" height="190px" alt="" />                        
+            <a href="{{ route('product.show', $product) }}">
+                <img src="images/{{ $product->image }}" class="img-fluid" width="300px" height="190px" alt="" />
+            </a>                        
         </div>
         <div class="card-body">
             <h5 class="card-title">
-                {{ $product->name_product }} 
+                <a href="{{ route('product.show', $product) }}"> {{ $product->name_product }} </a>
             </h5>
             <p class="card-title">
                 {{ $product->description }} 

@@ -18,6 +18,11 @@ class ProductController extends Controller
         return view('partials.seller.products.create', compact('product', 'textButton', 'options', 'title'));
     }
 
+    public function show(Product $product)
+    {        
+        return view('partials.products.show', compact('product'));
+    }
+
     public function store(Request $request)
     {
         $product = $request->all();
@@ -76,8 +81,7 @@ class ProductController extends Controller
     }
 
     public function destroy(Product $product)
-    {
-        
+    {        
         $product->delete();
         return back()->with('status', 'Producto eliminado correctamente');
     }

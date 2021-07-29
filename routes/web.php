@@ -35,7 +35,7 @@ Route::group(['prefix' => 'seller', 'as' => 'seller.', 'middleware' => ['seller'
 Route::get('/edit/{product}', 'ProductController@edit')->name('seller.edit');
 Route::put('/update/{product}', 'ProductController@update')->name('seller.update');
 Route::delete('/delete/{product}', 'ProductController@destroy')->name('seller.destroy');
-Route::get('/data-user/{user}', 'SellerController@show')->name('seller.show');
+//Route::get('/data-user/{user}', 'SellerController@show')->name('seller.show');
 
 /**
  * Rutas Comprador
@@ -49,3 +49,10 @@ Route::group(['prefix' => 'buyer', 'as' => 'buyer.', 'middleware' => ['auth']], 
  */
 Route::get('/videojuegos', 'VideogameController@index')->name('videogames.index');
 Route::get('/merchan', 'MerchanController@index')->name('merchan.index');
+Route::get('/peliculas', 'MovieController@index')->name('movies.index');
+    
+
+Route::group(['prefix' => 'product', 'as' => 'product.'], function(){
+  Route::get('/{product}', 'ProductController@show')->name('show');  
+});
+

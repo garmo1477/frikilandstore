@@ -1,15 +1,15 @@
 <!-- footer section -->
-<div class="bg-color d-flex align-items-center justify-content-center">    
-    <i class="fab fa-facebook"></i>
-    <i class="fab fa-instagram"></i>
-    <i class="fab fa-twitter"></i>
+<div class="social-icons bg-color d-flex align-items-center justify-content-center">    
+   <a href="#"><i class="fab fa-facebook"></i></a> 
+   <a href="#"><i class="fab fa-instagram"></i></a> 
+   <a href="#"><i class="fab fa-twitter"></i></a> 
 </div>
 <footer class="footer-section spad pb-0 col-md-12">
     <div class="footer-top">
         <div class="footer-warp">
             <div class="row pt-4">
                 <div class="widget-item col-md-3">
-                    <img src="images/logo.png" alt="">
+                    <img src="../images/logo.png" alt="">
                 </div>
                 <div class="widget-item col-md-3">
                     <h4>{{ __(('Info de contacto')) }}</h4>

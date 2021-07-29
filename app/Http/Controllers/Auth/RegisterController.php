@@ -74,12 +74,12 @@ class RegisterController extends Controller
             'role' => $data['role'],
         ]);
     }
-    public function registered(Request $request, $user)
+    public function registered(Request $request,User $user)
     {
         if ($request->ajax()) {
             return response()->json(['message' => __('Muchas gracias por registrarse')]);
         }
-        if (auth()->user() == 'SELLER') {
+        if ($user->role == User::SELLER) {
             return redirect()->route('seller.index')->with('status', 'Te has registrado correctamente, ya puedes acceder a tu perfil');
         } else {
             return redirect()->route('registro')->with('status', 'Te has registrado correctamente, ya puedes acceder a tu perfil');

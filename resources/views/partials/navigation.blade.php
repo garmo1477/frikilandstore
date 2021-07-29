@@ -28,7 +28,7 @@
                 <li><a class="pl-3" href="{{ route('welcome') }}">{{ __('Inicio') }}</a></li>
                 <li><a class="pl-3" href="{{ route('videogames.index') }}">{{ __('Videojuegos') }}</a></li>
                 <li><a class="pl-3" href="{{ route('merchan.index') }}">{{ __('Merchan') }}</a></li>
-                <li><a class="pl-3" href="">{{ __('Peliculas') }}</a></li>
+                <li><a class="pl-3" href="{{ route('movies.index') }}">{{ __('Peliculas') }}</a></li>
                 <li><a class="pl-3" href="#">Contacto</a></li>
                 <div class="links">
                     @include('partials.login.navigation_login')

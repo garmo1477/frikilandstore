@@ -8,6 +8,9 @@ class BuyerController extends Controller
 {
     public function index()
     {
-        return view('buyer.index');
+        $user = auth()->user();
+        return view('buyer.index', compact('user'));
     }
+
+   
 }

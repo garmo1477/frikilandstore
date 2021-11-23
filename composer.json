@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.2.5|^8.0",
         "ext-bcmath": "*",
-        "aws/aws-sdk-php": "~3.0",
+        "aws/aws-sdk-php": "^3.204",
         "fakerphp/faker": "^1.9.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -20,6 +20,10 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.0",
         "laravelcollective/html": "^6.2",
+        "league/flysystem": "~1.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/mime-type-detection": "^1.9",
+        "livewire/livewire": "^2.7",
         "phpseclib/bcmath_compat": "1.0.4",
         "vinkla/hashids": "8.0"
     },

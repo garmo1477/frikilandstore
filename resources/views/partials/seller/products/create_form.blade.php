@@ -1,3 +1,20 @@
+<?php
+@include('vendor.autoload')
+// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
+$s3 = new Aws\S3\S3Client([
+    'version'  => '2006-03-01',
+    'region'   => 'us-east-1',
+]);
+$bucket = getenv('AWS_BUCKET')?: die('No "AWS_BUCKET" config var in found in env!');
+
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['image']['tmp_name'])) {
+    // FIXME: you should add more of your own validation here, e.g. using ext/fileinfo
+
+        // FIXME: you should not use 'name' for the upload, since that's the original filename from the user's computer - generate a random filename that you then store in your database, or similar
+        $upload = $s3->upload($bucket, $_FILES['image']['name_file'], fopen($_FILES['image']['tmp_name'], 'rb'), 'public-read');
+}
+?>
+
 <div class="container mt-5 mb-5">
     <div class="col-md-12 form-card">
         @if (session('status'))
@@ -51,4 +68,4 @@
 
         {!! Form::close() !!}
     </div>
-</div>
+</div>       

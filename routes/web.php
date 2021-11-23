@@ -56,3 +56,4 @@ Route::group(['prefix' => 'product', 'as' => 'product.'], function(){
   Route::get('/{product}', 'ProductController@show')->name('show');  
 });
 
+Route::post('media/upload', [mediaUpload::class, 'upload'])->name('media.upload');
